@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>find recipes</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <header class="row justify-content-center align-items-center">
+            <div class="col-10 pb-3">
+                <div class="row justify-content-center">
+                    <h1 class="text-light text-center mb-3">Find Recipes <i class="fas fa-utensils"></i></h1>
+                    <input type="text" class="col-8 form-control fas searchInput" placeholder="&#xF002; Search for what you want to cook...">
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div class="container">
+
+        <div class="main row mb-3">
+            <div class="results col-md-3 pt-3 border">
+
+                <!-- <div class="loader col-12 text-center mt-5">
+                    <i class="fas fa-spinner h1"></i>
+                </div> -->
+
+                <!-- <h4 class="no-results text-dark text-center mt-3">No results found. Please try again!</h4>                 -->
+
+                <!-- <div class="error-search text-dark text-center mt-3">
+                    <h1 class="display-4 text-danger"><i class="fas fa-exclamation-circle"></i></h1>
+                    <h2>Oops! Something went wrong.</h2>
+                    <h5>Please try again later.</h5>
+                </div>                 -->
+
+                
+                <ul class="results-list p-0 row flex-nowrap flex-md-wrap m-0">
+
+                    <!-- <li class="col-3 col-md-12 px-1 px-md-3">
+                        <div class="card border-0 text-center text-lg-left">
+                            <a class="results-link results-link-active" href="#23456">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="img-container col-lg-4 p-1 m-auto">
+                                        <img src="https://tinyurl.com/y4pz6e7r" class="card-img rounded-circle" alt="test">
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="card-body p-2">
+                                            <h5 class="card-title text-danger">Card title</h5>
+                                            <p class="card-text text-dark d-none d-lg-block">This is a wider card.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="col-3 col-md-12 px-1 px-md-3">
+                        <div class="card border-0 text-center text-lg-left">
+                            <a class="results-link" href="#23456">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="img-container col-lg-4 p-1 m-auto">
+                                        <img src="https://tinyurl.com/y4pz6e7r" class="card-img rounded-circle" alt="test">
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="card-body p-2">
+                                            <h5 class="card-title text-danger">Card title</h5>
+                                            <p class="card-text text-dark d-none d-lg-block"">This is a wider card.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </li> -->
+
+                </ul>
+
+            </div>
+
+
+            <div class="recipe col-md-6 py-3">
+
+                <!-- <h4 class="reminder text-dark text-center mt-3">Click on a recipe to see more details!</h4> -->
+
+                <!-- <div class="error-recipe text-dark text-center mt-3">
+                    <h1 class="display-4 text-danger"><i class="fas fa-exclamation-circle"></i></h1>
+                    <h2>Oops! Something went wrong.</h2>
+                    <h5>Please try another recipe.</h5>
+                </div> -->
+
+                <!-- <div class="card text-center">
+                    <img src="https://tinyurl.com/y4pz6e7r" class="card-img-top" alt="test">
+                    <button class="btn btnLike float-right rounded-circle m-3 p-0 text-dark">
+                        <i class="far fa-heart"></i>
+                    </button>
+
+                    <div class="card-body text-dark">
+                        <h1 class="card-title recipe-title display-4 mb-3">Card title</h1>
+
+                        <div class="recipe-author mb-3">
+                            <span >By </span>
+                            <span class="author font-italic">Chunpin</span>
+                        </div>
+
+                        <div class="recipe-rank mb-4">
+                            <span class="stars text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </span>
+                            <span class="ml-1"> 99.99</span>
+                        </div>
+
+                        <div class="recipe-details">
+                            <span class="servings">2</span>
+                            <span class="px-2"> servings</span>
+
+                            <button class="btn btnPlus p-0 ml-1 text-dark">
+                                <i class="fas fa-plus-circle"></i>
+                            </button>
+                            <button class="btn btnMinus p-0 ml-1 text-dark">
+                                <i class="fas fa-minus-circle"></i>
+                            </button>
+                        </div>
+
+                        <div class="ingredients mt-3">
+                            <ul class="ingredients-list row p-0 text-left">
+                                <li class="col-6 my-2">
+                                    <i class="far fa-check-square"></i>
+                                    <span class="ingredient-count">1000</span>
+                                    <span class="ingredient-unit">g</span>
+                                    <span class="ingredient-name">pasta</span>
+                                </li>
+
+                                <li class="col-6 my-2">
+                                    <i class="far fa-check-square"></i>
+                                    <span class="ingredient-count">1000</span>
+                                    <span class="ingredient-unit">g</span>
+                                    <span class="ingredient-name">pasta</span>
+                                </li>
+
+                                <li class="col-6 my-2">
+                                    <i class="far fa-check-square"></i>
+                                    <span class="ingredient-count">1000</span>
+                                    <span class="ingredient-unit">g</span>
+                                    <span class="ingredient-name">pasta</span>
+                                </li>
+
+                                <li class="col-6 my-2">
+                                    <i class="far fa-check-square"></i>
+                                    <span class="ingredient-count">1000</span>
+                                    <span class="ingredient-unit">g</span>
+                                    <span class="ingredient-name">pasta</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <a href="#" target="_blank" class="btn btn-outline-info">How to Cook</a>
+                    </div>
+                </div> -->
+            </div>
+
+
+            <div class="like col-md-3 pt-3 border">
+                <h2 class="text-center text-dark">Liked <i class="fas fa-heart"></i></h2>
+
+                <ul class="like-list p-0 row m-0">
+                    <!-- <li class="col-3 col-md-12 px-1 px-md-3">
+                        <div class="card border-0 text-center text-lg-left">
+                            <a class="like-link like-link-active" href="#23456">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="img-container col-lg-5 p-1">
+                                        <img src="https://tinyurl.com/y4pz6e7r" class="card-img" alt="test">
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="card-body p-2">
+                                            <h5 class="card-title text-danger">Card title</h5>
+                                            <p class="card-text text-dark d-none d-lg-block"">This is a wider card.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="col-3 col-md-12 px-1 px-md-3">
+                        <div class="card border-0 text-center text-lg-left">
+                            <a class="like-link" href="#23456">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="img-container col-lg-5 p-1">
+                                        <img src="https://tinyurl.com/y4pz6e7r" class="card-img" alt="test">
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="card-body p-2">
+                                            <h5 class="card-title text-danger">Card title</h5>
+                                            <p class="card-text text-dark d-none d-lg-block"">This is a wider card.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </li> -->
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="text-center text-dark">
+            Powered by
+            <a href="http://food2fork.com" target="_blank" class="">Food2Fork</a>.
+        </div>
+    </div>
+
+    
+</body>
+</html>
