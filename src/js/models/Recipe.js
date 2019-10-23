@@ -6,22 +6,20 @@ export default class Recipe {
 	}
 
 	async getRecipe() {
-		const key = '8213d137c0608c2a2fce7b3085011b9b';
-		// const key = '08e6929dad5b6344b6fce2a3e530d9f2';
-		// const key = '5071eb71117192c0a9f866ea2bb97d2f';
-		// const key = 'e5527b65c76a4bfef81db134e4a3a11c';
+		const baseURL = 'https://cors-anywhere.herokuapp.com/https://api.edamam.com';
+		const key = '00dcb7a262f603d7ef8e5d781ebcc90f';
+		const id = '83d4f3eb';
+		const recipeURL = 'http://www.edamam.com/ontologies/edamam.owl';
+		const recipeId = encodeURIComponent(`${recipeURL}#${this.id}`);
 
-		const res = await axios(`https://www.food2fork.com/api/get?key=${key}&rId=${this.id}`);
-		this.title = res.data.recipe.title;
-		this.image = res.data.recipe.image_url;
-		this.publisher = res.data.recipe.publisher;
-		this.url = res.data.recipe.source_url;
-		this.ingredients = res.data.recipe.ingredients;
-		this.rank = res.data.recipe.social_rank;
-	}
-
-	calcServings() {
-		this.servings = 2;
+		const res = await axios(`${baseURL}/search?r=${recipeId}&app_id=${id}&app_key=${key}`);
+		const recipe = res.data[0];
+		this.title = recipe.label;
+		this.image = recipe.image;
+		this.publisher = recipe.source;
+		this.url = recipe.url;
+		this.ingredients = recipe.ingredientLines;
+		this.servings = recipe.yield;
 	}
 
 	parseIngredient() {
@@ -29,6 +27,7 @@ export default class Recipe {
 		const unitsOriginal = [
 			'tablespoons',
 			'tablespoon',
+			'tblsp',
 			'ounces',
 			'ounce',
 			'teaspoons',
@@ -38,7 +37,7 @@ export default class Recipe {
 			'slices',
 			'slice'
 		];
-		const unitsSimple = [ 'tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound', 'slice', 'slice' ];
+		const unitsSimple = [ 'tbsp', 'tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound', 'slice', 'slice' ];
 		const units = [ ...unitsSimple, 'kg', 'g', 'l', 'ml', 'stick' ];
 
 		const newIngredients = this.ingredients.map((el) => {
@@ -58,18 +57,36 @@ export default class Recipe {
 				const arrayCount = arrayIng.slice(0, unitIndex);
 
 				let count;
+				let unit = arrayIng[unitIndex];
+				let ingredient = arrayIng.slice(unitIndex + 1).join(' ');
 				if (unitIndex === 0) {
 					count = 1;
 				} else if (arrayCount.length === 1) {
+					//ex: 1, 1-1/2
 					count = eval(arrayCount[0].replace('-', '+'));
 				} else {
-					count = eval(arrayCount.join('+'));
+					if (arrayCount.every((el) => parseInt(el, 10))) {
+						//ex: 1 1/2 cup
+						count = eval(arrayCount.join('+'));
+					} else {
+						if (parseInt(arrayIng[0], 10)) {
+							//ex: 1 large cup
+							count = eval(arrayIng[0]);
+							unit = '';
+							ingredient = arrayIng.slice(1).join(' ');
+						} else {
+							//ex: large 1 cup
+							count = '';
+							unit = '';
+							ingredient = arrayIng.join(' ');
+						}
+					}
 				}
 
 				objIng = {
 					count,
-					unit: arrayIng[unitIndex],
-					ingredient: arrayIng.slice(unitIndex + 1).join(' ')
+					unit,
+					ingredient
 				};
 			} else if (parseInt(arrayIng[0], 10)) {
 				let count;

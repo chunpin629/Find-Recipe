@@ -5,64 +5,6 @@ export const clearRecipe = () => {
 	$('.recipe').empty();
 };
 
-const rankToStar = (rank) => {
-	if (rank === 100) {
-		return `
-            <span class="stars text-warning">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </span>
-        `;
-	} else if (rank >= 90 && rank < 100) {
-		return `
-            <span class="stars text-warning">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </span>
-        `;
-	} else if (rank >= 80 && rank < 90) {
-		return `
-            <span class="stars text-warning">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </span>
-        `;
-	} else if (rank >= 70 && rank < 80) {
-		return `
-            <span class="stars text-warning">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </span>
-        `;
-	} else if (rank >= 60 && rank < 70) {
-		return `
-            <span class="stars text-warning">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </span>
-        `;
-	} else {
-		return `
-            <span class="stars text-warning">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </span>
-        `;
-	}
-};
-
 export const formatCount = (count) => {
 	if (count) {
 		return fracty(count);
@@ -98,11 +40,6 @@ export const renderRecipe = (recipe, isLiked) => {
                 <div class="recipe-author mb-3">
                     <span>By </span>
                     <span class="author font-italic">${recipe.publisher}</span>
-                </div>
-
-                <div class="recipe-rank mb-4">
-                    ${rankToStar(recipe.rank)}
-                    <span class="ml-1">${Math.floor(recipe.rank * 100) / 100}</span>
                 </div>
 
                 <div class="recipe-details">
@@ -144,7 +81,7 @@ export const errorRecipe = () => {
         <div class="error-recipe text-dark text-center my-3">
             <h1 class="display-4 text-danger"><i class="fas fa-exclamation-circle"></i></h1>
             <h2>Oops! Something went wrong.</h2>
-            <h5>Please try another recipe.</h5>
+            <h5>Please try another recipe or try again later.</h5>
         </div>
     `);
 };

@@ -29,15 +29,15 @@ const renderRecipe = (recipe) => {
 	const markup = `
     <li class="col-4 col-sm-3 col-md-12 px-1">
         <div class="card border-0 text-center text-lg-left">
-            <a class="results-link" href="#${recipe.recipe_id}">
+            <a class="results-link" href="#${recipe.uri.split('#')[1]}">
                 <div class="row no-gutters align-items-center">
                     <div class="img-container col-lg-4 p-1 m-auto">
-                        <img src="${recipe.image_url}" class="card-img rounded-circle" alt="${recipe.title}">
+                        <img src="${recipe.image}" class="card-img rounded-circle" alt="${recipe.label}">
                     </div>
                     <div class="col-lg-8">
                         <div class="card-body p-2">
-                            <h5 class="card-title text-danger text-uppercase">${limitTitle(recipe.title)}</h5>
-                            <p class="card-text text-dark d-none d-lg-block">${recipe.publisher}</p>
+                            <h5 class="card-title text-danger text-uppercase">${limitTitle(recipe.label)}</h5>
+                            <p class="card-text text-dark d-none d-lg-block">${recipe.source}</p>
                         </div>
                     </div>
                 </div>

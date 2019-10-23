@@ -6,12 +6,11 @@ export default class Search {
 	}
 
 	async getResults() {
-		const key = '8213d137c0608c2a2fce7b3085011b9b';
-		// const key = '08e6929dad5b6344b6fce2a3e530d9f2';
-		// const key = '5071eb71117192c0a9f866ea2bb97d2f';
-		// const key = 'e5527b65c76a4bfef81db134e4a3a11c';
+		const baseURL = 'https://cors-anywhere.herokuapp.com/https://api.edamam.com';
+		const key = '00dcb7a262f603d7ef8e5d781ebcc90f';
+		const id = '83d4f3eb';
 
-		const res = await axios(`https://www.food2fork.com/api/search?key=${key}&q=${this.query}`);
-		this.results = res.data.recipes.slice(0, 20);
+		const res = await axios(`${baseURL}/search?q=${this.query}&app_id=${id}&app_key=${key}&from=0&to=15`);
+		this.results = res.data.hits.map((el) => el.recipe);
 	}
 }

@@ -44,7 +44,10 @@ const controlSearch = async () => {
 				searchView.noResutsReminder();
 			} else {
 				searchView.renderResults(state.search.results);
-				if (!window.location.hash) recipeView.recipeReminder();
+				if (!window.location.hash) {
+					recipeView.clearRecipe();
+					recipeView.recipeReminder();
+				}
 			}
 		} catch (err) {
 			clearLoader($('.results'));
@@ -75,7 +78,6 @@ const controlRecipe = async () => {
 
 		try {
 			await state.recipe.getRecipe();
-			state.recipe.calcServings();
 			state.recipe.parseIngredient();
 			clearLoader($('.recipe'));
 			recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
@@ -90,7 +92,7 @@ const controlRecipe = async () => {
 $(window).on('hashchange load', controlRecipe);
 
 $('.recipe').on('click', '.btnPlus', () => {
-	if (state.recipe.servings < 10) {
+	if (state.recipe.servings < 15) {
 		state.recipe.updateServIng('inc');
 		recipeView.updateServIng(state.recipe);
 	}
