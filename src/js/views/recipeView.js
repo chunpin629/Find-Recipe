@@ -82,6 +82,7 @@ export const errorRecipe = () => {
             <h1 class="display-4 text-danger"><i class="fas fa-exclamation-circle"></i></h1>
             <h2>Oops! Something went wrong.</h2>
             <h5>Please try another recipe or try again later.</h5>
+            <h6>(The API calls limits are 5/minute.)</h6>
         </div>
     `);
 };
