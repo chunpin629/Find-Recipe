@@ -2,6 +2,6 @@
 
 * using jQuery
 * using axios to make a API call  
-(data from [Food2Fork](https://www.food2fork.com/))
+(data from [Edamam](https://www.edamam.com/))
 * bootstrap styling
 * RWD webpage
